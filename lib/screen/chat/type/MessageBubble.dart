@@ -26,12 +26,14 @@ class _MessageBubbleState extends State<MessageBubble> {
 
     return GestureDetector(
       onLongPress: () {
-        showDialog(
-          context: context,
-          builder: (BuildContext context) {
-           return  dialog(context, "Silmek istiyor musunuz?", this.widget._id,0);
-          },
-        );
+        if(FirebaseAuth.instance.currentUser!.email == this.widget._userEmail){
+          showDialog(
+            context: context,
+            builder: (BuildContext context) {
+              return  dialog(context, "Silmek istiyor musunuz?", this.widget._id,0);
+            },
+          );
+        }
       },
       child: Column(
         crossAxisAlignment:
@@ -63,6 +65,8 @@ class _MessageBubbleState extends State<MessageBubble> {
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: 16,
+                      color: FirebaseAuth.instance.currentUser!.email == widget._userEmail
+                          ? Colors.green.shade700 : Colors.deepOrange.shade700,
                     ),
                   ),
                   SizedBox(

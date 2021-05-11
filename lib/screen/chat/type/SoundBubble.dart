@@ -34,12 +34,14 @@ class _SoundBubbleState extends State<SoundBubble> {
   Widget build(BuildContext context) {
     return GestureDetector(
       onLongPress: (){
-        showDialog(
-          context: context,
-          builder: (BuildContext context) {
-            return  dialog(context, "Silmek istiyor musunuz?", this.widget._id,1,url: this.widget._downloadUrl);
-          },
-        );
+        if(FirebaseAuth.instance.currentUser!.email == this.widget._userEmail){
+          showDialog(
+            context: context,
+            builder: (BuildContext context) {
+              return  dialog(context, "Silmek istiyor musunuz?", this.widget._id,1,url: this.widget._downloadUrl);
+            },
+          );
+        }
       },
       child: Column(
         crossAxisAlignment:

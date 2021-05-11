@@ -1,3 +1,4 @@
+import 'package:chattoweb/screen/chat/type/FileBubble.dart';
 import 'package:chattoweb/utils/Constant.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
@@ -46,11 +47,13 @@ class _MessageState extends State<MessageManager> {
   messageType(String type){
     switch(type){
       case "message":
-        return MessageBubble(this.widget._userEmail, this.widget._message, "");
+        return MessageBubble(this.widget._userEmail, this.widget._message, this.widget._id);
       case "photo":
         return PhotoBubble(this.widget._userEmail, _indirmeBaglantisi, this.widget._id);
       case "sound":
         return SoundBubble(this.widget._userEmail, _indirmeBaglantisi,this.widget._id);
+      case "file":
+        return FileBubble(this.widget._userEmail, _indirmeBaglantisi, this.widget._id);
     }
   }
   @override

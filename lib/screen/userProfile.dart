@@ -173,7 +173,7 @@ class _UserProfileState extends State<UserProfile> {
               _update == true
                   ? userNameEdit(_controllerUserNameEdit)
                   : GestureDetector(
-                      onHorizontalDragEnd: (e) {
+                      onLongPress: () {
                         setState(() {
                           getUserData();
                           _controllerUserNameEdit.text = name;
@@ -227,7 +227,7 @@ class _UserProfileState extends State<UserProfile> {
               _update == true
                   ? userDescriptionEdit(context, _controllerUserDescriptionEdit)
                   : GestureDetector(
-                      onHorizontalDragEnd: (e) {
+                      onLongPress: () {
                         setState(() {
                           getUserData();
                           _controllerUserNameEdit.text = name;
